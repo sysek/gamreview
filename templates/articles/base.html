@@ -8,14 +8,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
-<div class="container-fluid">
-    <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-text">
-            #1 najnowsze newsy | #2 ostatnie newsy | #forum: nie wiem! by ~user
-        </span>
-
-    </nav>
-</div>
 <div class="container">
     <div class="row">
         <div class="col-md-8">
@@ -29,20 +21,29 @@
     </div>
     <hr class="my-1">
     <div class="row">
-        <div class="col-md">
+        <div class="col-md-12">
             <nav class="nav justify-content-between">
                 <a class="" href="#">Na żywo</a>
                 <a class="text-muted" href="#">Recenzje</a>
                 <a class="text-muted" href="#">Konsole</a>
             </nav>
         </div>
-        <div clas="col-md">
+    </div>
+    <div class="row">
+        <div class="col-md-7">
             {% for article in articles %}
-            autor: {{  art.title }}
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-subtitle text-muted text-uppercase">{{ article.tag }}</h6>
+                    <h5 class="card-title">{{ article.title }}</h5>
+                    <p class="card-text">{{ article.text }}</p>
+                    <img class="card-img" src="http://thamesriver.on.ca/wp-content/uploads/BOD_header-280x131.png">
+                </div>
+            </div>
+            <br/>
             {% endfor %}
         </div>
     </div>
-
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
