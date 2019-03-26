@@ -15,6 +15,7 @@ class Article(models.Model):
     date = models.DateField(auto_now=True, auto_now_add=False)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
     text = models.TextField(default='')
+    image = models.ImageField(upload_to='articles/', default='media/articles/none.png')
 
     def __str__(self):
         return self.title
