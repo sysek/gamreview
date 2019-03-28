@@ -12,10 +12,13 @@ class Tag(models.Model):
 
 class Article(models.Model):
     title = models.CharField(max_length=30)
-    date = models.DateField(auto_now=True, auto_now_add=False)
+    date = models.DateTimeField(auto_now_add=True)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
     text = models.TextField(default='')
-    image = models.ImageField(upload_to='articles/', default='media/articles/none.png')
+    image = models.ImageField(upload_to='articles/', default='articles/none.png')
+
+    class Meta:
+        ordering = ['-date',]
 
     def __str__(self):
         return self.title

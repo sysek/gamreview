@@ -6,9 +6,9 @@ from .models import Article
 
 class HomeView(TemplateView):
     template_name = "articles/base.html"
-    paginate_by = 2
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data()
-        context['articles'] = Article.objects.order_by('-date')
+        context['articles'] = Article.objects.all()
         return context
+
