@@ -33,6 +33,7 @@
     </div>
     <div class="row">
         <div class="col-md-8">
+        {% block container %}
             {% for article in articles %}
                 <div class="card" style="width: 90%;">
                     <img class="card-img" src="media/{{ article.image }}">
@@ -40,7 +41,7 @@
                         <span class="badge badge-secondary">{{ article.tag }}</span>
                     </div>
                     <div class="card-body">
-                        <h5 class="h5 text-uppercase">{{ article.title }}</h5>
+                        <a href="{% url 'article' article.slug %}" class="card-link h5 text-uppercase">{{ article.title }}</a>
                         <p class="card-text text-truncate">{{ article.text }}</p>
                     </div>
                 </div>
@@ -50,8 +51,9 @@
         <div class="col-md-4">
             <div id="datepicker"></div>
             <br>
-            <a class="twitter-timeline" data-width="272" data-theme="light" href="https://twitter.com/sysek2?ref_src=twsrc%5Etfw">Tweets by sysek2</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <a class="twitter-timeline" data-width="277" data-dnt="true" href="https://twitter.com/gamesreview9?ref_src=twsrc%5Etfw">Tweets by gamesreview9</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
+    {% endblock %}
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

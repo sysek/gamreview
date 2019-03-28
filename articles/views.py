@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
 from .models import Article
 
 
@@ -12,3 +12,11 @@ class HomeView(TemplateView):
         context['articles'] = Article.objects.all()
         return context
 
+
+class ArticleView(DetailView):
+    model = Article
+
+    def get_context_data(self, **kwargs):
+        context = super(ArticleView, self).get_context_data()
+        context['art'] = Article.objects.all()
+        return context

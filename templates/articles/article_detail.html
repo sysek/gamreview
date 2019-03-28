@@ -1,0 +1,15 @@
+{% extends 'articles/base.html' %}
+
+{% block container %}
+    <div class="card" style="width: 90%;">
+        <img class="card-img" src="media/{{ art.image }}">
+        <div class="card-img-overlay">
+            <span class="badge badge-secondary">{{ art.tag }}</span>
+        </div>
+        <div class="card-body">
+            <p class="h5 text-uppercase">{{ art.title }}</p>
+            <p class="card-text text-truncate">{{ art.text }}</p>
+        </div>
+    </div>
+    <br>
+{% endblock %}
