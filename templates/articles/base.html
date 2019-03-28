@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'articles/css/base.css' %}">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
 <div class="container">
@@ -30,12 +31,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-8">
             {% for article in articles %}
                 <div class="card" style="width: 90%;">
-                    <img class="card-img-top" src="{{ article.image }}">
+                    <img class="card-img" src="{{ article.image }}">
+                    <div class="card-img-overlay">
+                        <span class="badge badge-secondary">{{ article.tag }}</span>
+                    </div>
                     <div class="card-body">
-                        <h6 class="h6 text-muted">{{ article.tag }}</h6>
                         <h5 class="h5 text-uppercase">{{ article.title }}</h5>
                         <p class="card-text text-truncate">{{ article.text }}</p>
                     </div>
@@ -43,11 +46,22 @@
                 <br>
             {% endfor %}
         </div>
+        <div class="col-md-4">
+            <div id="datepicker"></div>
+            <br>
+            <a class="twitter-timeline" data-width="272" data-theme="light" href="https://twitter.com/sysek2?ref_src=twsrc%5Etfw">Tweets by sysek2</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
     </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+    $( function() {
+        $( "#datepicker").datepicker();
+    });
+</script>
+
 </body>
 </html>
