@@ -15,9 +15,14 @@
     <nav class="navbar navbar-dark bg-dark text-white justify-content-between">
         <span class="navbar-brand mb-0 h1"><i class="fas fa-gamepad"></i> gamesreview</span>
         <span class="navbar-text text-right">
-            Witaj, {{ user.get_username }}<br>
-            <a href="#" class="badge badge-primary">Powiadomienia</a>
-            <a href="#" class="badge badge-secondary">Wyloguj</a>
+            {% if user.is_authenticated %}
+                Witaj, {{ user.get_username }}<br>
+                <a href="#" class="badge badge-primary">Powiadomienia</a>
+                <a href="#" class="badge badge-secondary">Wyloguj</a>
+            {% else %}
+                Witaj nieznajomy <br>
+            <a href="/admin" class="badge badge-primary">Zaloguj sie</a>
+            {% endif %}
         </span>
     </nav>
     <hr class="my-1">
@@ -31,9 +36,9 @@
             </nav>
         </div>
     </div>
+    {% block container %}
     <div class="row">
         <div class="col-md-8">
-        {% block container %}
             {% for article in articles %}
                 <div class="card">
                     <img class="card-img" src="{{ article.image.url }}" alt="">
@@ -50,8 +55,8 @@
             <br>
             <a class="twitter-timeline" data-width="277" data-dnt="true" href="https://twitter.com/gamesreview9?ref_src=twsrc%5Etfw">Tweets by gamesreview9</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
-    {% endblock %}
     </div>
+    {% endblock %}
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
