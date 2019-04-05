@@ -12,8 +12,8 @@
 </head>
 <body>
 <div class="container">
-    <nav class="navbar navbar-dark bg-dark text-white justify-content-between">
-        <span class="navbar-brand mb-0 h1"><i class="fas fa-gamepad"></i> gamesreview</span>
+    <nav class="navbar navbar-dark bg-logo text-white justify-content-between">
+        <span class="navbar-brand" style="max-width: 20%"><img class="resize" src="{% static 'articles/img/GAMESREVIEW/logo2.png' %}" alt=""> </span>
         <span class="navbar-text text-right">
             {% if user.is_authenticated %}
                 Witaj, {{ user.get_username }}<br>
