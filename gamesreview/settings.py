@@ -21,12 +21,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = os.environ.get['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ['DEBUG']
 
-ALLOWED_HOSTS = ['127.0.0.1', 'gamesreview.pl']
+ALLOWED_HOSTS = ['gamesreview.pl']
 
 
 # Application definition
@@ -91,7 +91,7 @@ else:
             'NAME': 'djangodb',
             'USER': 'django',
             'PASSWORD': os.environ['SQL_PASS'],
-            'HOST': '192.168.56.101',
+            'HOST': 'localhost',
             'PORT': '3306',
         }
     }
