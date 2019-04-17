@@ -26,7 +26,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ['DEBUG']
 
-ALLOWED_HOSTS = ['gamesreview.pl']
+ALLOWED_HOSTS = ['gamesreview.pl', '188.116.18.94']
 
 
 # Application definition
@@ -88,11 +88,9 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'djangodb',
-            'USER': 'django',
-            'PASSWORD': os.environ['SQL_PASS'],
-            'HOST': 'localhost',
-            'PORT': '3306',
+            'OPTIONS': {
+                'read_default_file': '/etc/my.cnf.d/django.cnf'
+            },
         }
     }
 
