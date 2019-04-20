@@ -6,6 +6,8 @@ Uzyte dodatki
 ===
 * [django-avatar](https://github.com/grantmcconnaughey/django-avatar)
 
+Aktualna wersja: 1.0
+
 Autor
 ===
 Mateusz Mielczarek
