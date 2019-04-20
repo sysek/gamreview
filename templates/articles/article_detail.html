@@ -1,0 +1,32 @@
+{% extends 'articles/base.html' %}
+{% load avatar_tags %}
+{% block title %} {{ article.title }} {% endblock %}
+
+{% block container %}
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text text-right">
+                        {{ article.date }} <br>
+                        {{ article.tag }}
+                    </p>
+                    <hr>
+                    <p class="h5 text-uppercase">
+                        {{ article.title }}
+                    </p>
+                    <hr>
+                    <p class="card-text text-justify">
+                        {% avatar user class="img-thumbnail img-fluid" %}
+                        {{ article.text }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div id="datepicker"></div>
+            <br>
+            <a class="twitter-timeline" data-width="277" data-dnt="true" href="https://twitter.com/gamesreview9?ref_src=twsrc%5Etfw">Tweets by gamesreview9</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+    </div>
+{% endblock %}
