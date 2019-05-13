@@ -26,7 +26,10 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ['DEBUG']
 
-ALLOWED_HOSTS = ['gamesreview.pl', '188.116.18.94']
+if os.environ['DEBUG'] == 'True':
+    ALLOWED_HOSTS = ['127.0.0.1']
+else:
+    ALLOWED_HOSTS = ['gamesreview.pl']
 
 
 # Application definition
