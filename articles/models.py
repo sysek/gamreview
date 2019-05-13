@@ -23,7 +23,7 @@ class Article(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
     text = models.TextField(default='')
-    image = models.ImageField(upload_to='articles/', default='articles/none.png')
+    image = models.ImageField(upload_to='articles/', default='NULL', null=True, blank=True)
 
     class Meta:
         ordering = ['-date']

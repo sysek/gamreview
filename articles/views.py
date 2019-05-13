@@ -1,4 +1,5 @@
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, ListView
+from django.views.generic.list import MultipleObjectMixin
 from .models import Article
 
 
@@ -11,6 +12,14 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data()
         context['articles'] = Article.objects.all()
         return context
+
+
+class ArticleListView(MultipleObjectMixin):
+    model = Article
+    template_name = 'articles/article_list.html'
+    context_object_name = 'articles'
+    paginate_by = 2
+    queryset = Article.objects.all()
 
 
 class ArticleView(DetailView):
