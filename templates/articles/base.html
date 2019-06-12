@@ -47,16 +47,6 @@
                 <a class="twitter-timeline" data-width="277" data-dnt="true" href="https://twitter.com/gamesreviewpl"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
         </div>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                {% if articles.has_previous %}
-                    <li class="page-item"><a class="page-link" href="?page={{ articles.previous_page_number }}">previous</a></li>
-                {% endif %}
-                {% if articles.has_next %}
-                    <li class="page-item"><a class="page-link" href="?page={{ articles.next_page_number }}">next</a></li>
-                {% endif %}
-            </ul>
-        </nav>
     {% endblock %}
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

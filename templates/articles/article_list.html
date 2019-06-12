@@ -1,5 +1,5 @@
 {% block container %}
-    {% for article in articles %}
+    {% for article in object_list %}
         <div class="card">
             {% if article.image == 'NULL' %}
             {% else %}
@@ -13,21 +13,25 @@
         </div>
         <br>
     {% endfor %}
+    {% if is_paginated %}
     <div class="pagination">
-    <span class="step-links">
-        {% if articles.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ articles.previous_page_number }}">previous</a>
-        {% endif %}
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
 
         <span class="current">
-            Page {{ articles.number }} of {{ articles.paginator.num_pages }}.
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
         </span>
 
-        {% if articles.has_next %}
-            <a href="?page={{ articles.next_page_number }}">next</a>
-            <a href="?page={{ articles.paginator.num_pages }}">last &raquo;</a>
+       {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_gaes }}">last &raquo;</a>
         {% endif %}
-    </span>
-</div>
+        </span>
+    </div>
+        {% else %}
+        <h4>Pagination not working</h4>
+    {% endif %}
 {% endblock %}

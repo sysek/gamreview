@@ -81,23 +81,6 @@ WSGI_APPLICATION = 'gamesreview.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 if os.environ['DEBUG'] == 'True':
-    SECURE_HSTS_SECONDS = True
-    SECURE_CONTENT_TYPE_NOSNIFF = True
-    SECURE_BROWSER_XSS_FILTER = True
-    SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    SECURE_HSTS_PRELOAD = True
-    CSRF_COOKIE_SECURE = True
-    X_FRAME_OPTIONS = 'DENY'
-
-    DATABASES = {
-        'default': {
-           'ENGINE': 'django.db.backends.sqlite3',
-           'NAME': 'db.sqlite3'
-        }
-    }
-else:
     SECURE_HSTS_SECONDS = False
     SECURE_CONTENT_TYPE_NOSNIFF = False
     SECURE_BROWSER_XSS_FILTER = False
@@ -110,12 +93,30 @@ else:
 
     DATABASES = {
         'default': {
+           'ENGINE': 'django.db.backends.sqlite3',
+           'NAME': 'db.sqlite3'
+        }
+    }
+else:
+    SECURE_HSTS_SECONDS = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    CSRF_COOKIE_SECURE = True
+    X_FRAME_OPTIONS = 'DENY'
+
+    DATABASES = {
+        'default': {
             'ENGINE': 'django.db.backends.mysql',
             'OPTIONS': {
                 'read_default_file': '/etc/my.cnf.d/django.cnf'
             },
         }
     }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
