@@ -12,6 +12,7 @@
 </head>
 <body>
 <div class="container">
+{#<a href="{% url 'article-list' %}">hello world</a>#}
     <nav class="navbar navbar-dark bg-logo text-white justify-content-between">
         <span class="navbar-brand" style="max-width: 20%"><img class="resize" src="{% static 'articles/img/GAMESREVIEW/logo2.png' %}" alt=""> </span>
         <span class="navbar-text text-right">
@@ -39,7 +40,41 @@
     {% block container %}
         <div class="row">
             <div class="col-md-8">
-                {% include 'articles/article_list.html' %}
+                {% for article in object_list %}
+                    <div class="card">
+                        {% if article.image == 'NULL' %}
+                        {% else %}
+                            <img class="card-img" src="{{ article.image.url }}" alt="">
+                        {% endif %}
+                        <div class="card-body">
+                            <a href="{% url 'article' article.slug %}" class="card-link h5 text-uppercase">{{ article.title }}</a>
+                            <span class="badge badge-secondary">{{ article.tag }}</span>
+                            <p class="card-text text-truncate">{{ article.text }}</p>
+                        </div>
+                    </div>
+                    <br>
+                {% endfor %}
+                {% if is_paginated %}
+                    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_gaes }}">last &raquo;</a>
+            {% endif %}
+        </span>
+                    </div>
+                {% else %}
+                    <h4>Pagination not working</h4>
+                {% endif %}
             </div>
             <div class="col-md-4">
                 <div id="datepicker"></div>
